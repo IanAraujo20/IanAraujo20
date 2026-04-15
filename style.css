@@ -1,8 +1,8 @@
 /* style.css */
 :root {
-    --bg: #030508;
+    --bg: #030508; /* Preto Profundo */
     --card-bg: rgba(255, 255, 255, 0.02);
-    --accent: #00d4ff;
+    --accent: #00d4ff; /* Azul Ciano NEXUS */
     --border: rgba(255, 255, 255, 0.08);
     --text-main: #ffffff;
     --text-dim: #8492a6;
@@ -12,6 +12,8 @@
 
 body {
     background-color: var(--bg);
+    background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 40px 40px;
     color: var(--text-main);
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
@@ -19,72 +21,61 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Efeito de iluminação no fundo */
+/* Brilho sutil no topo */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% -20%, rgba(0, 212, 255, 0.08), transparent 70%);
+    background: radial-gradient(circle at 50% -20%, rgba(0, 212, 255, 0.07), transparent 70%);
     pointer-events: none;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 80px 40px;
 }
 
-/* Cabeçalho mais imponente */
+/* Cabeçalho com a Foto */
 header {
-    margin-bottom: 100px;
-}
-
-.header-top {
-    display: flex;
-    justify-content: space-between;
+    margin-bottom: 120px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 50px;
     align-items: center;
-    margin-bottom: 40px;
 }
 
-.status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: monospace;
-    font-size: 0.7rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.dot {
-    width: 6px; height: 6px;
-    background-color: var(--accent);
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
 }
 
-h1 {
-    font-size: 4.5rem;
+.header-text h1 {
+    font-size: 4.8rem;
     font-weight: 800;
     margin: 0;
     letter-spacing: -3px;
-    line-height: 0.9;
+    line-height: 0.85;
+    text-transform: uppercase;
 }
 
 .title-desc {
     font-size: 1.25rem;
     color: var(--text-dim);
-    max-width: 500px;
-    margin-top: 20px;
+    max-width: 600px;
+    margin-top: 25px;
 }
 
-/* Seções Estilo Dashboard */
+/* Seções Estilo Dashboard (Igual ao exemplo que você mandou) */
 section {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
-    padding: 60px 0;
+    grid-template-columns: 280px 1fr;
+    gap: 50px;
+    padding: 80px 0;
     border-top: 1px solid var(--border);
 }
 
@@ -99,35 +90,36 @@ h2 {
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 40px;
-    border-radius: 2px; /* Bordas retas como no exemplo */
+    padding: 45px;
+    border-radius: 4px;
     transition: 0.4s ease;
 }
 
 .card:hover {
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.4);
 }
 
 .card h3 {
     font-size: 1.8rem;
     margin: 0 0 15px 0;
     font-weight: 600;
+    color: var(--accent);
 }
 
 .tech-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 25px;
 }
 
 .tech-item {
     font-family: monospace;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     border: 1px solid var(--border);
-    padding: 4px 10px;
-    color: var(--text-dim);
+    padding: 6px 12px;
+    color: var(--accent);
 }
 
 .social-links {
@@ -140,19 +132,21 @@ h2 {
     color: var(--text-main);
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 600;
-    border-bottom: 1px solid var(--accent);
+    font-weight: 800;
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 2px;
     transition: 0.3s;
 }
 
 .social-links a:hover {
-    color: var(--accent);
     letter-spacing: 1px;
+    background: var(--accent);
+    color: black;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+    header { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .header-text h1 { font-size: 3.5rem; }
     section { grid-template-columns: 1fr; }
-    h1 { font-size: 3rem; }
 }
